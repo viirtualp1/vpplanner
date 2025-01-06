@@ -1,11 +1,15 @@
 <template>
-  <div class="app-page">
+  <v-main class="app-page">
     <v-container>
-      <h1>App page</h1>
+      <app-cards />
     </v-container>
-  </div>
+
+    <app-action-button />
+  </v-main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AppCards, AppActionButton } from '@/domains/app'
+</script>
 
 <style lang="scss" src="./AppPage.scss"></style>
