@@ -1,11 +1,11 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  $END$
+  <div class="app-page">
+    <v-container>
+      <h1>App page</h1>
+    </v-container>
+  </div>
 </template>
 
-<style scoped>
+<script setup lang="ts"></script>
 
-</style>
+<style lang="scss" src="./AppPage.scss"></style>
