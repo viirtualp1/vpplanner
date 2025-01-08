@@ -16,6 +16,10 @@ export default defineNuxtConfig({
     },
   ],
   vite: {
+    define: {
+      'process.env.SUPABASE_URL': `'${process.env.SUPABASE_URL}'`,
+      'process.env.SUPABASE_KEY': `'${process.env.SUPABASE_KEY}'`,
+    },
     vue: {
       template: {
         transformAssetUrls,

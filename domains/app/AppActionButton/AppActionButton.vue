@@ -11,11 +11,37 @@
       </v-btn>
     </template>
 
-    <v-btn key="1" icon="$success" size="large"></v-btn>
-    <v-btn key="2" icon="$info" size="large"></v-btn>
-    <v-btn key="3" icon="$warning" size="large"></v-btn>
-    <v-btn key="4" icon="$error" size="large"></v-btn>
+    <v-btn
+      v-for="(group, groupIdx) in groups"
+      :key="groupIdx"
+      :icon="group.icon"
+      size="large"
+    />
   </v-speed-dial>
 </template>
+
+<script setup lang="ts">
+import { getGroups } from '@/services/groups'
+import type { GroupData } from '@/types/types'
+
+async function fetchData() {
+  try {
+    const data = await getGroups()
+    return data as unknown as GroupData[]
+  } catch (err) {
+    console.error(err)
+    return []
+  }
+}
+
+const { data: groups, error } = useLazyAsyncData('groups', fetchData, {
+  default: () => [],
+  server: false,
+})
+
+if (error.value) {
+  console.error(error.value)
+}
+</script>
 
 <style lang="scss" src="./AppActionButton.scss"></style>
